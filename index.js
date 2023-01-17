@@ -13,7 +13,7 @@ app.use(cors())
 
 const io = new Server(server, {
   cors: {
-    origin: 'https://chatty-frontend-l4it.onrender.com',
+    origin: ['https://chatty-frontend-l4it.onrender.com', 'http://2.68.181.236:3000'],
     methods: ['GET', 'POST']
   }
 })
