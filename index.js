@@ -19,15 +19,7 @@ app.get('/', (req, res) => {
 
 const io = new Server(server, {
   cors: {
-    origin: ['*'],
-
-    handlePreflightRequest: (req, res) => {
-      res.writeHead(200, {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,POST'
-      })
-      res.end()
-    }
+    origin: '*'
   }
 })
 
