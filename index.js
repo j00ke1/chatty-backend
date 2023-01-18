@@ -11,6 +11,12 @@ const server = http.createServer(app)
 
 app.use(cors())
 
+const PORT = process.env.PORT || 3001
+
+app.get('/', (req, res) => {
+  res.send(`Server on port ${PORT}`)
+})
+
 const io = new Server(server, {
   cors: {
     origin: ['*'],
@@ -26,6 +32,8 @@ const io = new Server(server, {
 })
 
 io.on('connection', (socket) => {
+
+  console.log('New connection')
 
   socket.on('join room', ({ username, room }) => {
     socket.join(room)
@@ -58,7 +66,6 @@ io.on('connection', (socket) => {
   })
 })
 
-const PORT = process.env.PORT || 3001
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`)
 })
